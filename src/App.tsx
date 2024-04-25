@@ -1,7 +1,14 @@
 import "./App.css";
+import Footer from "./components/footer";
+import Header from "./components/header";
 
 function App() {
-  return <div className="flex">creating telewebion landing</div>;
+  return (
+    <div>
+      <Header />
+      <Footer />
+    </div>
+  );
 }
 
 export default App;

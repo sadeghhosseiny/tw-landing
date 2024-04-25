@@ -1,7 +1,42 @@
-body {
-  margin: 0;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "IRANSans";   
+  src: local("IRANSans(FaNum)_Regular"),
+    url("/public/fonts/IRANSans\(FaNum\)_Regular.ttf") format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+  background: "#f3f3f3";
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: black;
+  margin: 0;
+  font-family: "IRANSans";
+  direction: rtl;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  .text-link-underline {
+    @apply cursor-pointer transition-all ease-in-out before:duration-300 before:absolute before:bg-gray-100 before:origin-center before:h-[2px] before:w-0 hover:before:w-[50%] before:bottom-[-4px] before:left-[50%] after:duration-300 after:absolute after:bg-gray-100 after:origin-center after:h-[2px] after:w-0 hover:after:w-[50%] after:bottom-[-4px] after:right-[50%];
+  }
+  
+  .text-mini-link-underline {
+    @apply cursor-pointer transition-all ease-in-out before:duration-300 before:absolute before:bg-gray-300 before:origin-center before:h-[1px] before:w-0 hover:before:w-[50%] before:bottom-[-4px] before:left-[50%] after:duration-300 after:absolute after:bg-gray-300 after:origin-center after:h-[1px] after:w-0 hover:after:w-[50%] after:bottom-[-4px] after:right-[50%];
+  }
+
+  .text-mini-link {
+    @apply text-gray-500 !text-sm;
+  }
+}
+
