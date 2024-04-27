@@ -1,12 +1,13 @@
 import { twMerge } from "tailwind-merge";
 
-interface ITextProps {
-  children: React.ReactNode;
+type PProps = JSX.IntrinsicElements["p"];
+interface ITextProps extends PProps {
+  children: string;
   className?: string;
 }
 
 const Text = ({ children, className = "", ...otherProps }: ITextProps) => {
-  const defaultStyle = "text-primary text-lg";
+  const defaultStyle = "text-primary text-base";
 
   return (
     <p {...otherProps} className={twMerge(defaultStyle, className)}>

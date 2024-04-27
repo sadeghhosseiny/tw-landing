@@ -1,7 +1,7 @@
 import { BaleIcon } from "../../assets/icons/bale";
 import { LinkedIn } from "../../assets/icons/linkedin";
 import { Instagram } from "../../assets/icons/instagram";
-import Text from "../Text";
+import Text from "../text";
 
 const Footer = () => {
   return (

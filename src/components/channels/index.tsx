@@ -4,7 +4,7 @@ import { T3 } from "../../assets/icons/Ch3";
 import { T4 } from "../../assets/icons/Ch4";
 import { T5 } from "../../assets/icons/Ch5";
 import { T6 } from "../../assets/icons/Ch6";
-import Text from "../Text";
+import Text from "../text";
 import Bars4Icon from "@heroicons/react/24/outline/Bars4Icon";
 import Channel from "./channel";
 
@@ -61,7 +61,7 @@ export const channels = [
 
 const Channels = () => {
   return (
-    <div className="px-10">
+    <div className="px-10 channels">
       <div className="mt-20 max-w-80">
         <div className="flex flex-wrap">
           {channels.map((item, index) => (

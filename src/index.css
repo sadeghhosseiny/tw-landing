@@ -10,7 +10,6 @@
 
 * {
   box-sizing: border-box;
-  background: "#f3f3f3";
 }
 
 html {
@@ -40,3 +39,28 @@ body {
   }
 }
 
+.channels {
+  flex: 0 0 auto;
+}
+
+.linear-gradient-effect::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(270deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 32rem), linear-gradient(rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 7rem);
+}
+
+
+.activeSlide {
+  opacity: 1;
+  transform: translateX(0);
+}
+.lastSlide {
+  transform: translateX(-100%);
+}
+.nextSlide {
+  transform: translateX(100%);
+}
