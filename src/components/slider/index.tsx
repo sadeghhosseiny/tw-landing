@@ -2,7 +2,7 @@ import { sliderData } from "../../mock-data/main-slider";
 import ChevronLeftIcon from "@heroicons/react/24/solid/ChevronLeftIcon";
 import ChevronRightIcon from "@heroicons/react/24/solid/ChevronRightIcon";
 import Button from "../button";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Text from "../text";
 
 const Slider = () => {

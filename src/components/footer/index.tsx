@@ -5,7 +5,7 @@ import Text from "../text";
 
 const Footer = () => {
   return (
-    <footer className="flex items-center fixed bottom-0 py-3 px-10 justify-between w-full">
+    <footer className="flex items-center fixed bottom-0 bg-black py-3 px-10 justify-between w-full">
       <div className="flex gap-6 items-center">
         <div className="flex items-center p-2 border border-gray-300">
           <Text className="cursor-pointer">دانلود اپلیکیشن</Text>

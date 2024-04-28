@@ -39,6 +39,16 @@ body {
   }
 }
 
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+}
+
 .channels {
   flex: 0 0 auto;
 }
@@ -52,7 +62,6 @@ body {
   height: 100%;
   background: linear-gradient(270deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 32rem), linear-gradient(rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 7rem);
 }
-
 
 .activeSlide {
   opacity: 1;
