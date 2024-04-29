@@ -1,16 +1,20 @@
 import ChevronLeftIcon from "@heroicons/react/24/solid/ChevronLeftIcon";
 import Text from "../text";
+import { useWindowSize } from "../../hooks/useWindowSize";
 
 interface IItemProps {
   item: {
     headerTitle: string;
     image: string;
+    mobileImage: string;
     title: string;
     description: string;
   };
 }
 
 const PromoteBanner = ({ item }: IItemProps) => {
+  const { mobile } = useWindowSize();
+
   return (
     <div className="relative">
       <div className="flex gap-3 items-center mb-4">
@@ -18,7 +22,10 @@ const PromoteBanner = ({ item }: IItemProps) => {
         <ChevronLeftIcon className="size-5 text-gray-50" />
       </div>
       <img
-        src={process.env.PUBLIC_URL + `images/promote/${item.image}`}
+        src={
+          process.env.PUBLIC_URL +
+          `images/promote/${mobile ? item.mobileImage : item.image}`
+        }
         className="w-full"
         alt="promote-banner"
       />

@@ -1,8 +1,9 @@
 import { useRef, useState } from "react";
-import Button from "../button";
 import Text from "../text";
-import ChevronRightIcon from "@heroicons/react/24/solid/ChevronRightIcon";
 import ChevronLeftIcon from "@heroicons/react/24/solid/ChevronLeftIcon";
+import useDraggable from "../../hooks/useDraggable";
+import CarouselItem from "./carousel-item";
+import CarouselNextPrevButtons from "../carousel-next-prev-buttons";
 
 interface ICarouselItemsProps {
   path?: string;
@@ -25,9 +26,20 @@ const Carousel = ({
   carouselData,
 }: ICarouselItemsProps) => {
   const elementRef = useRef<HTMLDivElement>(null);
+
   const restItemsForScroll = useRef<number>(carouselData.items.length);
   const [hideNextBtn, setHideNextBtn] = useState<boolean>(false);
   const [hidePrevBtn, setHidePrevBtn] = useState<boolean>(true);
+
+  const { onTouchStart } = useDraggable({
+    onDragMove: (diff) => {
+      if (diff < 50) {
+        next();
+      } else if (diff > -50) {
+        prev();
+      }
+    },
+  });
 
   const scroll = (direction: string) => {
     const containerWidth = elementRef.current?.clientWidth;
@@ -44,8 +56,6 @@ const Carousel = ({
   };
 
   const calcHideNextPrevBtn = (direction: string) => {
-    console.log("cur ", restItemsForScroll.current);
-
     restItemsForScroll.current =
       restItemsForScroll.current +
       (direction === "prev" ? itemScrollNumber : -itemScrollNumber);
@@ -81,55 +91,20 @@ const Carousel = ({
       )}
       <div
         ref={elementRef}
+        onMouseDown={onTouchStart}
+        onTouchStart={onTouchStart}
         className="flex gap-2 image-container relative mb-6 overflow-x-hidden whitespace-nowrap snap-x snap-mandatory transition-all ease-in-out duration-500 no-scrollbar scroll-smooth"
       >
-        {carouselData.items.map((item, index) => {
-          return (
-            <div
-              key={item.id}
-              className="flex-shrink-0 snap-start w-[calc(100%/4)] relative"
-            >
-              <img
-                src={process.env.PUBLIC_URL + `${path}/${item.image}`}
-                alt="carousel"
-                className={`carousel-image w-full`}
-              />
-              {item.isNewEpisode && (
-                <Text className="absolute text-sm bottom-[56px] bg-red-600 p-1 right-1">
-                  قسمت جدید
-                </Text>
-              )}
-              <Text className="absolute bottom-[56px] bg-black p-1 left-1">
-                {item.duration}
-              </Text>
-              <Text className="mt-1">{item.title}</Text>
-              <Text className="text-sm mt-1 text-gray-500">
-                {item.description}
-              </Text>
-            </div>
-          );
+        {carouselData.items.map((item) => {
+          return <CarouselItem key={item.id} item={item} path={path} />;
         })}
       </div>
-      {!hideNextBtn && (
-        <div className="absolute top-0 -left-5 h-[calc(100%-50px)] flex items-center">
-          <Button
-            onClick={next}
-            className="rounded-full w-fit bg-gray-700 opacity-70 hover:bg-gray-200 hover:text-gray-800 hover:scale-110 hover:opacity-100 transition-all ease-in-out duration-300"
-          >
-            <ChevronLeftIcon className="size-4" />
-          </Button>
-        </div>
-      )}
-      {!hidePrevBtn && (
-        <div className="absolute top-0 -right-5 h-[calc(100%-50px)] flex items-center">
-          <Button
-            onClick={prev}
-            className="rounded-full w-fit bg-gray-700 opacity-70 hover:bg-gray-200 hover:text-gray-800 hover:scale-110 hover:opacity-100 transition-all ease-in-out duration-300"
-          >
-            <ChevronRightIcon className="size-4" />
-          </Button>
-        </div>
-      )}
+      <CarouselNextPrevButtons
+        hideNextBtn={hideNextBtn}
+        hidePrevBtn={hidePrevBtn}
+        next={next}
+        prev={prev}
+      />
     </div>
   );
 };

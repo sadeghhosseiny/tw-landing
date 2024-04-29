@@ -62,13 +62,13 @@ export const channels = [
 const Channels = () => {
   return (
     <div className="px-10 channels">
-      <div className="mt-20 max-w-80">
-        <div className="flex flex-wrap">
+      <div className="mt-10 sm:mt-20 max-w-full sm:max-w-80">
+        <div className="flex flex-nowrap sm:flex-wrap gap-3 sm:gap-0 overflow-x-auto no-scrollbar">
           {channels.map((item, index) => (
             <Channel key={index} icon={item.icon} title={item.title} />
           ))}
         </div>
-        <div className="border border-red-600 rounded-sm p-3 hover:bg-red-500 group transition-all cursor-pointer duration-300">
+        <div className="border hidden sm:block border-red-600 rounded-sm p-3 hover:bg-red-500 group transition-all cursor-pointer duration-300">
           <div className="flex items-center justify-between">
             <Text className="text-red-600 group-hover:text-gray-300 duration-300 text-sm">
               پخش زنده شبکه های تلویزیون

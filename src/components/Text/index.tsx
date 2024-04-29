@@ -7,7 +7,7 @@ interface ITextProps extends PProps {
 }
 
 const Text = ({ children, className = "", ...otherProps }: ITextProps) => {
-  const defaultStyle = "text-primary text-base";
+  const defaultStyle = "text-primary text-xs sm:text-base";
 
   return (
     <p {...otherProps} className={twMerge(defaultStyle, className)}>

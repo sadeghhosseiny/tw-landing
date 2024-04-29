@@ -13,7 +13,7 @@ function App() {
   return (
     <div>
       <Header />
-      <div className="flex max-w-[1920px] mx-0">
+      <div className="flex max-w-[1920px] mx-0 flex-col-reverse sm:flex-row">
         <Channels />
         <Slider />
       </div>

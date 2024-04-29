@@ -1,6 +1,7 @@
 export const promoteItem = {
   headerTitle: "جدیدترین فیلم ها",
   image: 'banner.png',
+  mobileImage: 'mobile-banner.png',
   title: "سریال مرد آهنی:انتقام برای آزادی",
   description: "در این سریال مرد آهنی انتقامی برای آزادی میگیرد",
 }
