@@ -1,7 +1,9 @@
+import ChevronLeftIcon from "@heroicons/react/24/solid/ChevronLeftIcon";
 import Text from "../text";
 
 interface IItemProps {
   item: {
+    headerTitle: string;
     image: string;
     title: string;
     description: string;
@@ -11,6 +13,10 @@ interface IItemProps {
 const PromoteBanner = ({ item }: IItemProps) => {
   return (
     <div className="relative">
+      <div className="flex gap-3 items-center mb-4">
+        <Text>{item.title}</Text>
+        <ChevronLeftIcon className="size-5 text-gray-50" />
+      </div>
       <img
         src={process.env.PUBLIC_URL + `images/promote/${item.image}`}
         className="w-full"

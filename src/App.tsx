@@ -17,18 +17,18 @@ function App() {
         <Channels />
         <Slider />
       </div>
-      <div className="px-10">
+      <div className="px-10 max-w-[1920px]">
         <div className="mt-10">
-          <Carousel carouselItems={carouselData} />
+          <Carousel carouselData={carouselData} />
         </div>
         <div className="mt-6">
-          <Carousel carouselItems={carouselData} />
+          <Carousel carouselData={carouselData} />
         </div>
         <div>
           <PromoteBanner item={promoteItem} />
           <Carousel
             path={"/images/promote"}
-            carouselItems={promoteItemsCarousel}
+            carouselData={promoteItemsCarousel}
           />
         </div>
       </div>

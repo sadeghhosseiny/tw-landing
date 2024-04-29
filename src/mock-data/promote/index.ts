@@ -1,10 +1,12 @@
 export const promoteItem = {
+  headerTitle: "جدیدترین فیلم ها",
   image: 'banner.png',
   title: "سریال مرد آهنی:انتقام برای آزادی",
   description: "در این سریال مرد آهنی انتقامی برای آزادی میگیرد",
 }
 
-export const promoteItemsCarousel = [
+export const promoteItemsCarousel = {
+  items: [
   {
     image: 'image.png',
     title: 'مرد آهنی:انتقام برای آزادی',
@@ -70,3 +72,4 @@ export const promoteItemsCarousel = [
     id: 8
   }
 ]
+}

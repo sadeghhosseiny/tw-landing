@@ -6,24 +6,26 @@ import ChevronLeftIcon from "@heroicons/react/24/solid/ChevronLeftIcon";
 
 interface ICarouselItemsProps {
   path?: string;
-  carouselItems: {
-    image: string;
-    title: string;
-    description: string;
-    duration: string;
-    isNewEpisode: boolean;
-    id: number;
-  }[];
+  carouselData: {
+    title?: string;
+    items: {
+      image: string;
+      title: string;
+      description: string;
+      duration: string;
+      isNewEpisode: boolean;
+      id: number;
+    }[];
+  };
 }
-
 const itemScrollNumber = 4;
 
 const Carousel = ({
   path = "/images/carousel",
-  carouselItems,
+  carouselData,
 }: ICarouselItemsProps) => {
   const elementRef = useRef<HTMLDivElement>(null);
-  const restItemsForScroll = useRef<number>(carouselItems.length);
+  const restItemsForScroll = useRef<number>(carouselData.items.length);
   const [hideNextBtn, setHideNextBtn] = useState<boolean>(false);
   const [hidePrevBtn, setHidePrevBtn] = useState<boolean>(true);
 
@@ -49,7 +51,7 @@ const Carousel = ({
       (direction === "prev" ? itemScrollNumber : -itemScrollNumber);
 
     return direction === "prev"
-      ? restItemsForScroll.current === carouselItems.length
+      ? restItemsForScroll.current === carouselData.items.length
       : restItemsForScroll.current <= itemScrollNumber;
   };
 
@@ -71,11 +73,17 @@ const Carousel = ({
 
   return (
     <div className="relative">
+      {carouselData.title && (
+        <div className="flex gap-3 items-center mb-4">
+          <Text>{carouselData.title}</Text>
+          <ChevronLeftIcon className="size-5 text-gray-50" />
+        </div>
+      )}
       <div
         ref={elementRef}
-        className="flex gap-2 image-container relative mb-4 overflow-x-auto whitespace-nowrap snap-x snap-mandatory transition-all ease-in-out duration-500 no-scrollbar scroll-smooth"
+        className="flex gap-2 image-container relative mb-6 overflow-x-hidden whitespace-nowrap snap-x snap-mandatory transition-all ease-in-out duration-500 no-scrollbar scroll-smooth"
       >
-        {carouselItems.map((item, index) => {
+        {carouselData.items.map((item, index) => {
           return (
             <div
               key={item.id}
@@ -103,22 +111,24 @@ const Carousel = ({
         })}
       </div>
       {!hideNextBtn && (
-        <div>
+        <div className="absolute top-0 -left-5 h-[calc(100%-50px)] flex items-center">
           <Button
             onClick={next}
-            className="absolute z-10 rounded-full bg-gray-700 left-[-20px] top-12 opacity-70 hover:bg-gray-200 hover:text-gray-800 hover:scale-110 hover:opacity-100 transition-all ease-in-out duration-300"
+            className="rounded-full w-fit bg-gray-700 opacity-70 hover:bg-gray-200 hover:text-gray-800 hover:scale-110 hover:opacity-100 transition-all ease-in-out duration-300"
           >
             <ChevronLeftIcon className="size-4" />
           </Button>
         </div>
       )}
       {!hidePrevBtn && (
-        <Button
-          onClick={prev}
-          className="absolute z-10 rounded-full bg-gray-700 right-[-20px] top-12 opacity-70 hover:bg-gray-200 hover:text-gray-800 hover:scale-110 hover:opacity-100 transition-all ease-in-out duration-300"
-        >
-          <ChevronRightIcon className="size-4" />
-        </Button>
+        <div className="absolute top-0 -right-5 h-[calc(100%-50px)] flex items-center">
+          <Button
+            onClick={prev}
+            className="rounded-full w-fit bg-gray-700 opacity-70 hover:bg-gray-200 hover:text-gray-800 hover:scale-110 hover:opacity-100 transition-all ease-in-out duration-300"
+          >
+            <ChevronRightIcon className="size-4" />
+          </Button>
+        </div>
       )}
     </div>
   );

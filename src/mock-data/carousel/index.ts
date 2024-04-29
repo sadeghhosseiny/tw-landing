@@ -1,4 +1,7 @@
-export const carouselData = [
+
+export const carouselData = {
+  title: "جدیدترین قسمت سریال ها",
+  items: [
   {
   image: "image1.png",
   title: "مستوران",
@@ -72,3 +75,4 @@ export const carouselData = [
   id: 9
 },
 ]
+}
