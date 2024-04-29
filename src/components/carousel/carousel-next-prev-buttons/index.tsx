@@ -1,7 +1,7 @@
 import ChevronLeftIcon from "@heroicons/react/24/solid/ChevronLeftIcon";
-import { useWindowSize } from "../../hooks/useWindowSize";
-import Button from "../button";
 import ChevronRightIcon from "@heroicons/react/24/solid/ChevronRightIcon";
+import { useWindowSize } from "../../../hooks/useWindowSize";
+import Button from "../../button";
 
 interface ICarouselNextPrevButtonsProps {
   hideNextBtn: boolean;

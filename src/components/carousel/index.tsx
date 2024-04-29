@@ -3,7 +3,7 @@ import Text from "../text";
 import ChevronLeftIcon from "@heroicons/react/24/solid/ChevronLeftIcon";
 import useDraggable from "../../hooks/useDraggable";
 import CarouselItem from "./carousel-item";
-import CarouselNextPrevButtons from "../carousel-next-prev-buttons";
+import CarouselNextPrevButtons from "./carousel-next-prev-buttons";
 
 interface ICarouselItemsProps {
   path?: string;
